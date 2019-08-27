@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import { Link } from 'react-router-dom'
  const Navbar = ()=>{
     return(
@@ -12,6 +12,10 @@ import { Link } from 'react-router-dom'
                         <li><Link to="/cart"><i className="material-icons">shopping_cart</i></Link></li>
                     </ul>
                 </div>
-            </nav>  
+            </nav>
+   
+        
     )
 }
+
+export default Navbar

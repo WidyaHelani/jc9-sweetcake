@@ -3,9 +3,11 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { removeItem,addQuantity,subtractQuantity} from './actions/cartActions'
 import Recipe from './Recipe'
+import { onLogin } from "./actions/loginActions"
+
 class Cart extends Component{
 
-    //to remove the item completely
+    //to remove the item 
     handleRemove = (id)=>{
         this.props.removeItem(id);
     }
@@ -16,6 +18,15 @@ class Cart extends Component{
     //to substruct from the quantity
     handleSubtractQuantity = (id)=>{
         this.props.subtractQuantity(id);
+    }
+
+    onClickLoginButton = () => {
+        this.props.onLogin(email, password)
+        .then((res) => {
+            console.log(res.data)
+
+            
+        })
     }
     render(){
               
@@ -32,7 +43,7 @@ class Cart extends Component{
                                     <div className="item-desc">
                                         <span className="title">{item.title}</span>
                                         <p>{item.desc}</p>
-                                        <p><b>Price: {item.price}$</b></p> 
+                                        <p><b>Price:{item.price}</b></p> 
                                         <p>
                                             <b>Quantity: {item.quantity}</b> 
                                         </p>
@@ -41,10 +52,8 @@ class Cart extends Component{
                                             <Link to="/cart"><i className="material-icons" onClick={()=>{this.handleSubtractQuantity(item.id)}}>arrow_drop_down</i></Link>
                                         </div>
                                         <button className="waves-effect waves-light btn pink remove" onClick={()=>{this.handleRemove(item.id)}}>Remove</button>
-                                    </div>
-                                    
-                                </li>
-                         
+                                    </div>                                    
+                                </li>                         
                     )
                 })
             ):
